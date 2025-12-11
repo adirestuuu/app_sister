@@ -5,11 +5,11 @@ app = Flask(__name__)
 app.secret_key = 'kunci_rahasia_mahasiswa' 
 
 # list url service
-SERVER_LOGIN_USER = 'http://localhost:5001'
-SERVER_SOAL = 'http://localhost:5002'
-SERVER_VOTE = 'http://localhost:5003'
-SERVER_DATA = 'http://localhost:5004'
-SERVER_TOKEN = 'http://localhost:5005'
+SERVER_LOGIN_USER = '172.16.13.220'
+SERVER_SOAL = '172.16.14.185'
+SERVER_VOTE = '10.5.4.34'
+SERVER_DATA = '172.16.10.204'
+SERVER_TOKEN = '172.16.12.17'
 
 # interface html
 TAMPILAN_HTML = """
@@ -199,7 +199,7 @@ def aksi_login():
         }
 
         # proses menghubungi
-        res = requests.post(f'{SERVER_AUTH}/login', json=data_login)
+        res = requests.post(f'{SERVER_LOGIN_USER}/login', json=data_login)
         
         # jika server login statusnya 200 = ok
         if res.status_code == 200:
@@ -333,4 +333,4 @@ def halaman_grafik(id_nya):
 # menyalakan server
 if __name__ == '__main__':
     print("FRONTEND PORT 5000")
-    app.run(port=5000)
+    app.run(host='0.0.0.0', port=5000)

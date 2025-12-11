@@ -104,4 +104,4 @@ def hitung_suara(id_poll):
 # menyalakan server
 if __name__ == '__main__':
     print("NODE 3 DATA RESULT")
-    app.run(port=5004)
+    app.run(host='0.0.0.0', port=5004)

@@ -61,4 +61,4 @@ def terima_suara():
 # menyalakan server
 if __name__ == '__main__':
     print("NODE 2 VOTING PORT 5003")
-    app.run(port=5003)
+    app.run(host='0.0.0.0', port=5003)

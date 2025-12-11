@@ -19,11 +19,11 @@ def create():
     try:
 
         # di cek apakah username dan passwordnya benar atau tidak dari api login (app_user)
-        auth = requests.post('http://localhost:5001/login', json={'username': 'admin', 'password': '123'}, timeout=2)
+        auth = requests.post('http://172.16.13.220/login', json={'username': 'admin', 'password': 'rahasia'}, timeout=2)
 
         # jika api login (app_user) statusnya bukan 200, akan ditolak
         if auth.status_code != 200:
-            return jsonify({"msg": "Login ditolak"}), 401
+            return jsonify({"Login ditolak"}), 401
 
     except:
         # jika api login (app_user) mati
@@ -58,4 +58,4 @@ def create():
 # start server
 if __name__ == '__main__':
     print("NODE 1 POLL PORT 5002")
-    app.run(port=5002)
+    app.run(host='0.0.0.0', port=5002)
