@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 # path database
-DB_PATH = os.path.join(os.path.dirname(__file__), '../node_3_data/core.db')
+DB_PATH = r'\\LAPTOP-8LH2FFMN\node_3_data\core.db'
 
 @app.route('/create', methods=['POST'])
 def create():

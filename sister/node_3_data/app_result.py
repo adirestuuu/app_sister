@@ -6,13 +6,14 @@ import os
 app = Flask(__name__)
 
 # path database
-LOKASI_DB = os.path.join(os.path.dirname(__file__), 'core.db')
+DB_PATH = r'\\LAPTOP-8LH2FFMN\node_3_data\core.db'
+
 
 # fitur hapus
 @app.route('/delete/<id_poll>', methods=['POST'])
 def hapus_data(id_poll):
     try:
-        conn = sqlite3.connect(LOKASI_DB)
+        conn = sqlite3.connect(DB_PATH)
         cur = conn.cursor()
         
         # hapus suara yang diinput user
@@ -34,7 +35,7 @@ def hapus_data(id_poll):
 @app.route('/history', methods=['GET'])
 def ambil_riwayat():
     try:
-        conn = sqlite3.connect(LOKASI_DB)
+        conn = sqlite3.connect(DB_PATH)
         cur = conn.cursor()
         
         # ambil id dan soal dari yg terbaru
@@ -54,7 +55,7 @@ def ambil_riwayat():
 @app.route('/tokens/<id_poll>', methods=['GET'])
 def cek_token(id_poll):
     try:
-        conn = sqlite3.connect(LOKASI_DB)
+        conn = sqlite3.connect(DB_PATH)
         cur = conn.cursor()
         cur.execute("SELECT token_code FROM tokens WHERE poll_id=? AND is_used=0", (id_poll,))
         data = cur.fetchall()
@@ -71,7 +72,7 @@ def cek_token(id_poll):
 @app.route('/summary/<id_poll>', methods=['GET'])
 def hitung_suara(id_poll):
     try:
-        conn = sqlite3.connect(LOKASI_DB)
+        conn = sqlite3.connect(DB_PATH)
         cur = conn.cursor()
         
         # mengambil detail soal & jawaban

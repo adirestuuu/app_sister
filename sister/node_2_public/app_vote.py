@@ -7,8 +7,7 @@ import os
 app = Flask(__name__)
 
 # lokasi database
-LOKASI_DB = os.path.join(os.path.dirname(__file__), '../node_3_data/core.db')
-
+DB_PATH = r'\\LAPTOP-8LH2FFMN\node_3_data\core.db'
 # kunci agar tidak bentrok
 kunci_db = Lock()
 
@@ -25,7 +24,7 @@ def terima_suara():
         try:
 
             # membuka database
-            conn = sqlite3.connect(LOKASI_DB)
+            conn = sqlite3.connect(DB_PATH)
             cur = conn.cursor()
             
             # cek tokennya ada atau tidak
